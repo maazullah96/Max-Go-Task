@@ -1,6 +1,6 @@
 import { createContext, useReducer, useContext, useEffect } from 'react'
 import axios from 'axios'
-const API_URL = 'http://localhost:3000/api/property-listings'
+const API_URL = '/api/property-listings'
 
 const ListingsContext = createContext()
 
