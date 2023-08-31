@@ -18,6 +18,7 @@ const propertyMockListings = (req, res) => {
 
 const propertyListingDetail = (req, res) => {
   const listingId = req.params.id
+  console.log(`listingId ==> ${listingId}`)
   const listing = mockListings.find((listing) =>
     listing.imageUrl.includes(listingId)
   )

@@ -1,22 +1,18 @@
-import React, { useState } from 'react'
+import { Outlet } from 'react-router-dom'
+// import { useState } from 'react'
 import './App.css'
-import DataTable from './components/DataTable'
-import CardView from './components/CardView'
-import { ListingsProvider } from './ListingsContext'
-
+import Header from './components/Header'
+import Container from 'react-bootstrap/Container'
 function App() {
-  const [viewType, setViewType] = useState('table')
-
   return (
-    <ListingsProvider>
-      <div className='App'>
-        <div className='view-switch'>
-          <button onClick={() => setViewType('table')}>Table View</button>
-          <button onClick={() => setViewType('card')}>Card View</button>
-        </div>
-        {viewType === 'table' ? <DataTable /> : <CardView />}
-      </div>
-    </ListingsProvider>
+    <>
+      <Header />
+      <main className='py-4'>
+        <Container>
+          <Outlet />
+        </Container>
+      </main>
+    </>
   )
 }
 

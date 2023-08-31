@@ -46,6 +46,17 @@ const reducer = (state, action) => {
         ...state,
         listings: action.payload
       }
+    case 'SET_FILTERED_LISTINGS':
+      return {
+        ...state,
+        filteredListings: action.payload
+      }
+
+    case 'SELECT_LISTING':
+      return {
+        ...state,
+        selectedListing: action.payload
+      }
     default:
       return state
   }
