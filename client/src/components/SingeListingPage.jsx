@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { useListingsDispatch, useListingsContext } from '../ListingsContext'
+import {
+  useListingsDispatch,
+  useListingsContext
+} from '../context/ListingsContext'
 import { Container, Row, Col, Card, Spinner, Badge } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -14,13 +17,12 @@ import {
   faStore
 } from '@fortawesome/free-solid-svg-icons'
 
-const API_URL = 'http://localhost:3000/api/listing'
+const API_URL = '/api/listing'
 
 const propertyTypeIcons = {
   house: faHome,
   apartment: faBuilding,
-  condo: faBuilding // You can customize this mapping based on your data
-  // Add more property types and icons as needed
+  condo: faBuilding
 }
 
 const SingleListingPage = () => {
@@ -45,8 +47,8 @@ const SingleListingPage = () => {
   if (!selectedListing) {
     return (
       <Container className='mt-5'>
-        <Spinner animation='border' role='status'>
-          <span className='visually-hidden'>Loading...</span>
+        <Spinner animation='border' role='status' size='lg'>
+          {/* <span className='visually-hidden'>Loading...</span> */}
         </Spinner>
       </Container>
     )

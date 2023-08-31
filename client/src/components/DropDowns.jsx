@@ -1,5 +1,8 @@
 import { Dropdown } from 'react-bootstrap'
-import { useListingsDispatch, useListingsContext } from '../ListingsContext'
+import {
+  useListingsDispatch,
+  useListingsContext
+} from '../context/ListingsContext'
 
 const DropDowns = () => {
   const { itemsPerPage } = useListingsContext()

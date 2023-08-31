@@ -1,5 +1,4 @@
-// src/ListingsContext.js
-import React, { createContext, useReducer, useContext, useEffect } from 'react'
+import { createContext, useReducer, useContext, useEffect } from 'react'
 import axios from 'axios'
 const API_URL = 'http://localhost:3000/api/property-listings'
 
@@ -12,7 +11,7 @@ const initialState = {
   loading: true,
   error: null,
   currentPage: 1,
-  itemsPerPage: 10 // Default number of items per page
+  itemsPerPage: 5 // Default number of items per page
 }
 
 const reducer = (state, action) => {

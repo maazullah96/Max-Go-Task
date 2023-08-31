@@ -1,24 +1,6 @@
-// import DataTable from './DataTable'
-// import { useState } from 'react'
-// import CardTable from './CardTable'
-// const Listings = () => {
-//   const [viewType, setViewType] = useState('table')
-
-//   return (
-//     <div className='App'>
-//       <div className='view-switch'>
-//         <button onClick={() => setViewType('table')}>Table View</button>
-//         <button onClick={() => setViewType('card')}>Card View</button>
-//       </div>
-//       {viewType === 'table' ? <DataTable /> : <CardTable />}
-//     </div>
-//   )
-// }
-// export default Listings
-
-import React, { useState } from 'react'
+import { useState } from 'react'
 import DataTable from './DataTable'
-import CardTable from './CardTable'
+import CardListings from './CardListings'
 import { Tab, Tabs } from 'react-bootstrap'
 
 const Listings = () => {
@@ -27,6 +9,8 @@ const Listings = () => {
   return (
     <div className='App'>
       <Tabs
+        fill
+        variant='pills'
         activeKey={viewType}
         onSelect={(selectedKey) => setViewType(selectedKey)}
         id='view-switch-tabs'
@@ -36,7 +20,7 @@ const Listings = () => {
           <DataTable />
         </Tab>
         <Tab eventKey='card' title='Card View'>
-          <CardTable />
+          <CardListings />
         </Tab>
       </Tabs>
     </div>

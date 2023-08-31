@@ -10,8 +10,9 @@ import {
 } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import SingeListingPage from './components/SingeListingPage'
-import { ListingsProvider } from './ListingsContext'
+import { ListingsProvider } from './context/ListingsContext.jsx'
 import Listings from './components/Listings.jsx'
+import NotFound from './components/NotFound.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route path='listing'>
         <Route path=':listingId' element={<SingeListingPage />}></Route>
       </Route>
+      <Route component={NotFound} />
     </Route>
   )
 )

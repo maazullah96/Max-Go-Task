@@ -1,15 +1,23 @@
-import { useState, useEffect, useMemo } from 'react'
-import Pagination from 'react-bootstrap/Pagination'
-import { useListingsContext, useListingsDispatch } from '../ListingsContext'
-import { Table, Row, Col, Container, Stack } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { useState, useMemo } from 'react'
+import {
+  useListingsContext,
+  useListingsDispatch
+} from '../context/ListingsContext'
+import {
+  Table,
+  Row,
+  Col,
+  Container,
+  Stack,
+  Spinner,
+  Form
+} from 'react-bootstrap'
+// import { Link } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons'
-import { useNavigate } from 'react-router-dom'
-import Form from 'react-bootstrap/Form'
+import { useNavigate, useLocation } from 'react-router-dom'
 
-// import { Dropdown } from 'react-bootstrap'
 import TableFooter from './TableFooter'
 
 const DataTable = () => {
@@ -141,7 +149,8 @@ const DataTable = () => {
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
   const listingsForPage = filteredListings.slice(startIndex, endIndex)
-  const totalPages = Math.ceil(filteredListings.length / itemsPerPage)
+  // const totalPages = Math.ceil(filteredListings.length / itemsPerPage)
+  const location = useLocation()
 
   const getSortIcon = (column) => {
     if (sortColumn === column) {
@@ -151,11 +160,13 @@ const DataTable = () => {
   }
 
   const handleRowClick = (listingId) => {
+    const { hash, pathname, search } = location
+    console.log(hash, pathname, search)
     navigate(`listing/${listingId}`)
   }
 
   if (loading) {
-    return <div>Loading...</div>
+    return <Spinner animation='grow' size='lg' variant='primary' />
   }
 
   if (error) {
@@ -284,7 +295,8 @@ const DataTable = () => {
                   {listingsForPage.map((item) => (
                     <tr key={item.id} onClick={() => handleRowClick(item.id)}>
                       <td>
-                        <Link to={`listing/${item.id}`}> {item.id}</Link>
+                        {item.id}
+                        {/* <Link to={`listing/${item.id}`}> {item.id}</Link> */}
                       </td>
                       <td>{item.title}</td>
                       <td>{item.address}</td>

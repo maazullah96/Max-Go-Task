@@ -34,7 +34,10 @@
 // export default Paginations
 
 import Pagination from 'react-bootstrap/Pagination'
-import { useListingsContext, useListingsDispatch } from '../ListingsContext'
+import {
+  useListingsContext,
+  useListingsDispatch
+} from '../context/ListingsContext'
 
 const Paginations = () => {
   const { listings, filteredListings, itemsPerPage, currentPage } =
